@@ -1,0 +1,33 @@
+Poltergaeist: please read before installing
+
+Poltergaeist haunts the computer it is installed on. It builds slowly over the
+first hour, then stays at its peak until it is stopped. While it runs it can:
+  - type short text into the active window and erase it again
+  - show ghost text and dim the screen, on every monitor
+  - play breathing, footsteps and heartbeat sounds
+  - shake the mouse cursor
+  - set off a full-screen white flash with a loud ringing sound, at random
+    times, from the moment it starts
+
+It cannot be paused. By default it starts again every time you sign in to
+Windows. To stop it:
+  - End "Poltergaeist.exe" in Task Manager (stops it until the next sign-in), or
+  - Restart the PC (it starts again, and the hour begins over), or
+  - Uninstall it from Windows "Installed apps" (removes it completely,
+    including its start-up entry and settings).
+Esc dismisses any effect on screen. Ctrl+Alt+Q is an emergency exit.
+
+Safety
+  - The flash is very bright and the ring is loud. Do not install this on a
+    computer used by anyone with photosensitive epilepsy, or by anyone who has
+    not agreed to be haunted. Do not use headphones.
+  - A ghost icon appears in the system tray whenever it is running, and it is
+    always listed in Task Manager and in Windows Settings > Apps > Startup.
+  - Settings (volume, flash timing, turning effects off) are in
+    %APPDATA%\Poltergaeist\config.json
+
+Privacy
+  - Everything runs locally. No data is sent to the internet. The optional
+    AI-written whispers come from a model running on this computer (Ollama).
+  - The program watches keyboard activity only to know when you pause typing.
+    Typed text is never saved.

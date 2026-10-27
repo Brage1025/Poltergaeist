@@ -1,0 +1,5 @@
+pynput
+sounddevice
+numpy
+pystray
+Pillow

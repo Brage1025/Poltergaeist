@@ -1,0 +1,77 @@
+name: Build Windows app
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to attach files to a release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Work out the version
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF -like 'refs/tags/v*') {
+            $ver = $env:GITHUB_REF_NAME.TrimStart('v')
+          } else {
+            $ver = "0.0.$env:GITHUB_RUN_NUMBER"
+          }
+          "VERSION=$ver" >> $env:GITHUB_ENV
+          Write-Host "Version: $ver"
+
+      - name: Build the app (PyInstaller)
+        shell: cmd
+        run: build.bat
+
+      - name: Smoke test the built exe
+        shell: pwsh
+        run: |
+          $p = Start-Process dist\Poltergaeist\Poltergaeist.exe -ArgumentList "--selftest" -Wait -PassThru
+          $log = Join-Path $env:APPDATA "Poltergaeist\poltergaeist.log"
+          if (Test-Path $log) { Get-Content $log }
+          if ($p.ExitCode -ne 0) { throw "Self-test failed (exit code $($p.ExitCode))" }
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup -y --no-progress
+
+      - name: Build the installer
+        shell: pwsh
+        run: |
+          $iscc = Join-Path ${env:ProgramFiles(x86)} "Inno Setup 6\ISCC.exe"
+          & $iscc "/DAppVersion=$env:VERSION" installer.iss
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed" }
+
+      - name: Make the portable zip
+        shell: pwsh
+        run: Compress-Archive -Path dist\Poltergaeist\* -DestinationPath installer_output\Poltergaeist-portable.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Poltergaeist-windows
+          path: |
+            installer_output/Poltergaeist-Setup.exe
+            installer_output/Poltergaeist-portable.zip
+          if-no-files-found: error
+
+      - name: Publish a release (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            installer_output/Poltergaeist-Setup.exe
+            installer_output/Poltergaeist-portable.zip
+          generate_release_notes: true

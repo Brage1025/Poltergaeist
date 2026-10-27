@@ -1,0 +1,8 @@
+*.bat text eol=crlf
+*.iss text eol=crlf
+NOTICE.txt text eol=crlf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.png binary
+*.ico binary
