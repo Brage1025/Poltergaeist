@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # needed to attach files to a release
+  contents: write # needed to attach files to a release
 
 jobs:
   build:
@@ -51,8 +51,13 @@ jobs:
       - name: Build the installer
         shell: pwsh
         run: |
+          # Stamp the version into the script as plain text (no preprocessor needed)
+          $text = Get-Content installer.iss
+          if (-not ($text | Select-String -Pattern '^AppVersion=' -Quiet)) { throw "AppVersion line not found in installer.iss" }
+          Set-Content installer.iss ($text -replace '^AppVersion=.*$', "AppVersion=$env:VERSION")
+          Select-String -Path installer.iss -Pattern '^AppVersion='
           $iscc = Join-Path ${env:ProgramFiles(x86)} "Inno Setup 6\ISCC.exe"
-          & $iscc "/DAppVersion=$env:VERSION" installer.iss
+          & $iscc installer.iss
           if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed" }
 
       - name: Make the portable zip
