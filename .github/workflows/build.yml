@@ -79,4 +79,5 @@ jobs:
           files: |
             installer_output/Poltergaeist-Setup.exe
             installer_output/Poltergaeist-portable.zip
+          body_path: RELEASE_NOTES.md
           generate_release_notes: true
