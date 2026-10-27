@@ -82,7 +82,7 @@ poltergaeist/
   assets/
     mascot_head.png         program icon and tray icon
     mascot_full.png         shown when you right-click the tray icon
-    README.md               who made the artwork, and its terms
+    README.md               where the artwork came from, and its terms (free to use)
   make_icon.py              builds icon.ico from the head
   build.bat                 builds the Windows app
   installer.iss             Inno Setup script for the installer
@@ -102,6 +102,25 @@ the tray icon. Right-click the tray icon and a small popup appears with the
 full-body mascot, a line of dialogue, and a credit that links to this
 repository. Right-click again, press Esc, click the x, or click anywhere
 outside to close it. The link target is `REPO_URL` near the top of `haunt.py`.
+
+### About Poltergæist-chan
+
+Poltergæist-chan was generated with an AI image generator. I chose to generate
+her because I did not have the time or the funds to commission a proper mascot
+for this project.
+
+Because she was generated and not drawn by a human artist, nobody owns her, and
+I do not claim copyright in her. You are free to use, modify, remix and
+redistribute her, including commercially, with no permission needed. Credit is
+appreciated but not required. To the extent any rights do exist, I dedicate them
+to the public domain under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). (Whether AI
+images can be copyrighted varies by country, so this is a statement of intent,
+not legal advice.)
+
+If I commission a mascot in the future, the copyright and license of the new
+artwork would be different, and this section and `assets/README.md` would be
+updated to say so.
 
 ## How the haunting works
 
@@ -222,5 +241,6 @@ open-source components, listed with their licenses in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The language model you run has
 its own license; check it before you redistribute anything.
 
-The mascot artwork in `assets/` was created by Brage1025 and is not covered by
-the MIT License (see [assets/README.md](assets/README.md)).
+The mascot artwork in `assets/` is not covered by the MIT License. It is
+AI-generated and owned by no one; see [The mascot](#the-mascot) below and
+[assets/README.md](assets/README.md).
