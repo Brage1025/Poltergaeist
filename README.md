@@ -5,7 +5,7 @@
 <h1 align="center">Poltergæist</h1>
 
 <p align="center">
-  A ghost for your Windows PC, with a local open-weight AI at its core.<br>
+  A cute ghost for your Windows PC, with a local open-weight AI at its core.<br>
   It builds slowly over the first hour, then stays at its peak until you stop it.
 </p>
 
