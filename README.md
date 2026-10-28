@@ -12,6 +12,8 @@
 <p align="center">
   <a href="https://github.com/Brage1025/Poltergaeist/releases/latest"><b>Download the latest release</b></a>
   &nbsp;|&nbsp;
+  <a href="#demo">Watch the demo</a>
+  &nbsp;|&nbsp;
   <a href="#build-from-source">Build from source</a>
   &nbsp;|&nbsp;
   <a href="LICENSE">MIT License</a>
@@ -110,6 +112,23 @@ the program is listed in Task Manager and in Settings, Apps, Startup.
   use it to scare someone who has not agreed to it.
 - Ghost text is erased after about 2 seconds. Do not run it over anything you
   cannot afford to have a stray character in.
+
+## Demo
+
+<p align="center">
+  <a href="https://youtu.be/BMeRXXoPa2w">
+    <img src="https://img.youtube.com/vi/BMeRXXoPa2w/maxresdefault.jpg" alt="Watch the Poltergæist demo on YouTube" width="640">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/BMeRXXoPa2w"><b>Watch the demo on YouTube</b></a>
+</p>
+
+The demo runs in time-lapse mode (`--demo`), which plays the full hour of
+escalation in about two minutes. The real thing is a much slower burn.
+
+> The video contains a bright flash and a loud sound.
 
 ## Privacy
 
